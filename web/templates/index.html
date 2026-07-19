@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Чаты — MeowMind Panel{% endblock %}
+{% block content %}
+<h1>Чаты бота</h1>
+{% if chats %}
+    {% for chat in chats %}
+    <div class="card">
+        <a href="/chat/{{ chat.id }}">{{ chat.title or "Без названия" }}</a>
+        <div class="muted">ID: {{ chat.id }}
+            {% if chat.only_caps %} · <span class="badge">только кэпы</span>{% endif %}
+            {% if chat.points_channel %} · канал {{ chat.points_channel }}{% endif %}
+        </div>
+    </div>
+    {% endfor %}
+{% else %}
+    <p class="muted">Пока нет ни одного чата. Добавьте бота в группу и напишите сообщение.</p>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}MeowMind Panel{% endblock %}</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, Segoe UI, Roboto, sans-serif;
+            background: #0f1115; color: #e5e7eb; line-height: 1.5;
+        }
+        .nav {
+            background: #171a21; padding: 14px 24px; display: flex;
+            justify-content: space-between; align-items: center;
+            border-bottom: 1px solid #262b36;
+        }
+        .nav a { color: #7dd3fc; text-decoration: none; }
+        .nav .brand { font-weight: 700; color: #fff; font-size: 18px; }
+        .container { max-width: 960px; margin: 0 auto; padding: 24px; }
+        h1 { font-size: 22px; margin-bottom: 16px; }
+        h2 { font-size: 18px; margin: 24px 0 12px; color: #cbd5e1; }
+        table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+        th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid #262b36; }
+        th { color: #94a3b8; font-size: 13px; text-transform: uppercase; }
+        tr:hover { background: #1a1e27; }
+        .card {
+            background: #171a21; border: 1px solid #262b36;
+            border-radius: 10px; padding: 18px; margin-bottom: 16px;
+        }
+        .card a { color: #7dd3fc; text-decoration: none; font-weight: 600; }
+        input[type=number], input[type=text], input[type=password] {
+            background: #0f1115; border: 1px solid #2d3340; color: #e5e7eb;
+            padding: 7px 10px; border-radius: 6px; width: 100px;
+        }
+        button {
+            background: #2563eb; color: #fff; border: none;
+            padding: 8px 14px; border-radius: 6px; cursor: pointer; font-weight: 600;
+        }
+        button:hover { background: #1d4ed8; }
+        .badge {
+            display: inline-block; padding: 2px 8px; border-radius: 12px;
+            font-size: 12px; background: #1e3a5f; color: #7dd3fc;
+        }
+        .muted { color: #64748b; font-size: 13px; }
+        form.inline { display: inline-flex; gap: 8px; align-items: center; }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <span class="brand">🐱 MeowMind Panel</span>
+        <span><a href="/">Чаты</a> &nbsp; <a href="/logout">Выйти</a></span>
+    </div>
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

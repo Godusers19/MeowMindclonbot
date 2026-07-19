@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}{{ chat.title }} — MeowMind Panel{% endblock %}
+{% block content %}
+<h1>{{ chat.title or "Без названия" }}</h1>
+<div class="muted">ID: {{ chat.id }}</div>
+
+<h2>Участники ({{ members|length }})</h2>
+{% if members %}
+<table>
+    <tr><th>Имя</th><th>Username</th><th>Группа</th><th>Баллы</th><th></th></tr>
+    {% for m, u in members %}
+    <tr>
+        <td>{{ u.first_name or "—" }}</td>
+        <td>{% if u.username %}@{{ u.username }}{% else %}<span class="muted">—</span>{% endif %}</td>
+        <td><span class="badge">{{ m.group }}</span></td>
+        <td>
+            <form class="inline" method="post" action="/chat/{{ chat.id }}/points">
+                <input type="hidden" name="user_id" value="{{ m.user_id }}">
+                <input type="number" name="points" value="{{ m.points }}">
+                <button type="submit">💾</button>
+            </form>
+        </td>
+        <td class="muted">{{ m.user_id }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p class="muted">Пока никто не писал в чат.</p>
+{% endif %}
+
+<h2>Товары магазина ({{ items|length }})</h2>
+{% if items %}
+<table>
+    <tr><th>ID</th><th>Название</th><th>Тип</th><th>Цена</th><th>Описание</th></tr>
+    {% for it in items %}
+    <tr>
+        <td>{{ it.id }}</td>
+        <td>{{ it.name }}</td>
+        <td>{% if it.kind == "auto" %}🤖 авто{% else %}🙋 ручной{% endif %}</td>
+        <td>{{ it.price }}</td>
+        <td class="muted">{{ it.description or "—" }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p class="muted">Товаров нет.</p>
+{% endif %}
+{% endblock %}
