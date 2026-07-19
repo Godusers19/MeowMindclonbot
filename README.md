@@ -58,3 +58,5 @@ web/                 — FastAPI-панель + шаблоны
   можно переключить `DATABASE_URL` на PostgreSQL.
 - Команды используют префиксы `.` `+` `-` (как в оригинале), не `/`.
 - Зайди в бота @BotFather -  /setprivacy выбери своего и нажми на  Disable
+- Все делал Opus 4.8 + Sonnet 4.6.
+- Оригальный бот @Raspgamebot .
